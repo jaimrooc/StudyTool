@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition template="/templates/common-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+	<!-- Desde plantilla -->
+	<ui:define name="content">
+		<h:form>
+			Hello!!
+			<br/>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton action="#{indexMB.goToAlumnos()}" value="Alumnos" styleClass="btn btn-default"/>
+				</div>
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton action="#{indexMB.goToTiposDocumentos()}" value="Tipo documento" styleClass="btn btn-default"/>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

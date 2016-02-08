@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-with, initial-scale=1"/>
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<title>
+		<ui:insert name="title">#{msg['general.welcome']}</ui:insert>
+	</title>
+</h:head> 
+<body>
+	<div class="container">
+		<ui:insert name="header">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-brand">
+					<h:outputLabel value="#{msg['general.software.name']}" />
+				</div>
+			</div>
+			<h:form>
+				<h:outputLabel value="#{msg['general.languaje']}" />
+				<h:selectOneMenu value="#{language.localeCode}" onchange="submit()" valueChangeListener="#{language.countryLocaleCodeChanged}">
+		   			<f:selectItems value="#{language.countriesInMap}" /> 
+		   		</h:selectOneMenu>
+			</h:form>
+		</ui:insert>
+		<ui:insert name="content">No content!</ui:insert>
+		<ui:insert name="footer">
+			<br/>
+			&copy; Copyright <h:outputLabel value="#{msg['general.software.name']}" />
+		</ui:insert>
+		<ui:insert name="scripts"></ui:insert>
+	</div>
+</body> 
+</html>

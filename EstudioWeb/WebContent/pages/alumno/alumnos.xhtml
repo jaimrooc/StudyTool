@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition template="/templates/common-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"> 
+
+	<!-- Desde plantilla -->
+	<ui:define name="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<h:form styleClass="form-horizontal">
+				
+				
+					<div class="form-group">
+						<h:outputLabel value="#{msg['student.document.type']}" styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:selectOneMenu value="#{alumnoMB.alumnoForm.id.tipoDocumento}" styleClass="form-control" >
+								<f:selectItems value="#{alumnoMB.allTipoDocumentos}" var="entry" 
+								itemValue="#{entry.codigo}" itemLabel="#{entry.nombre}"  />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="#{msg['student.document.number']}" styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{alumnoMB.alumnoForm.id.identificacion}" styleClass="form-control"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="#{msg['student.name']}" styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{alumnoMB.alumnoForm.nombre}" styleClass="form-control"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="#{msg['student.first.name']}" styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{alumnoMB.alumnoForm.primerApellido}" styleClass="form-control"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="#{msg['student.birth.date']}" styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<p:calendar value="#{alumnoMB.alumnoForm.fechaNacimiento}" styleClass="control-label col-sm-2" pattern="yyyy-MM-dd"/>
+						</div>
+					</div>
+					<!-- Boton submit -->
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<c:choose>
+								<c:when test="#{alumnoMB.alumnoForm.editar}">
+									<h:inputHidden value="#{alumnoMB.alumnoForm.id.tipoDocumento}" />
+									<h:inputHidden value="#{alumnoMB.alumnoForm.id.identificacion}" />
+									<h:commandButton action="#{alumnoMB.update()}" value="#{msg['genera.update']}" />
+								</c:when>
+								<c:otherwise>
+									<h:commandButton action="#{alumnoMB.create()}" value="#{msg['general.create']}" styleClass="btn btn-default"/>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</h:form> 
+				<!-- Lista -->
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<td><h:outputText value="#{msg['student.document.type']}" /></td>
+							<td><h:outputText value="#{msg['student.document.number']}" /></td>
+							<td><h:outputText value="#{msg['student.name']}" /></td>
+							<td><h:outputText value="#{msg['student.birth.date']}" /></td>
+							<td colspan="2"><h:outputText value="#{msg['general.actions']}"/></td>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat var="alum" value="#{alumnoMB.allAlumnos}">
+							<tr>
+								<td>#{alum.tipoDocumentoBean.nombre}</td>
+								<td>#{alum.id.identificacion}</td>
+								<td>#{alum.nombre} #{alum.primerApellido}</td>
+								<td>#{alum.fechaNacimiento}</td>
+								<td>
+									<h:form>
+										<h:commandLink action="#{alumnoMB.getAlumno(alum.id.tipoDocumento, alum.id.identificacion)}">
+											<i class="glyphicon glyphicon-edit"/>
+										</h:commandLink>
+									</h:form>
+								</td>
+								<td>
+									<h:form>
+										<h:commandLink action="#{alumnoMB.delete(alum.id.tipoDocumento, alum.id.identificacion)}">
+											<i class="glyphicon glyphicon-trash"></i>
+										</h:commandLink>
+									</h:form>
+								</td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,7 +1,9 @@
 package com.jarosoftware.estudio.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -46,8 +48,14 @@ public class Profesore implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="tipo_documento", insertable=false, updatable=false)
 	private TipoDocumento tipoDocumentoBean;
+	
+	@Transient
+	private boolean editar;
 
 	public Profesore() {
+		if (this.id == null) {
+			id = new ProfesorePK();
+		}
 	}
 
 	public ProfesorePK getId() {
@@ -136,4 +144,11 @@ public class Profesore implements Serializable {
 		this.tipoDocumentoBean = tipoDocumentoBean;
 	}
 
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
+	}
 }

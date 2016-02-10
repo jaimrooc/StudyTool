@@ -18,21 +18,32 @@
     <navigation-rule>
     	<!-- Default view -->
     	<from-view-id>/pages/index.xhtml</from-view-id>
-    	<!-- Default view home -->
+    	<!-- Default view 'home' -->
     	<navigation-case>
     		<from-outcome>index</from-outcome>
     		<to-view-id>/pages/index.xhtml</to-view-id>
     	</navigation-case>
-    	<!-- Default view student -->
+    	<!-- Default view 'student' -->
     	<navigation-case>
     		<from-outcome>alumnos</from-outcome>
     		<to-view-id>/pages/alumno/alumnos.xhtml</to-view-id>
     	</navigation-case>
-    	<!-- Default view document type -->
+    	<!-- Default view 'document type' -->
     	<navigation-case>
     		<from-outcome>tipoDocumento</from-outcome>
     		<to-view-id>/pages/contenidos/tiposDocumentos.xhtml</to-view-id>
     	</navigation-case>
+    	<!-- Default view 'subject' -->
+    	<navigation-case>
+    		<from-outcome>asignatura</from-outcome>
+    		<to-view-id>/pages/asignatura/asignaturas.xhtml</to-view-id>
+    	</navigation-case>
+    	<!-- Default view 'teacher' -->
+    	<navigation-case>
+    		<from-outcome>profesor</from-outcome>
+    		<to-view-id>/pages/profesor/profesores.xhtml</to-view-id>
+    	</navigation-case>
+    	
     </navigation-rule>
     
 </faces-config>

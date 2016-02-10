@@ -12,17 +12,17 @@ public class ProfesorePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	private long identificacion;
+	private Long identificacion;
 
 	@Column(name="tipo_documento", insertable=false, updatable=false)
 	private long tipoDocumento;
 
 	public ProfesorePK() {
 	}
-	public long getIdentificacion() {
+	public Long getIdentificacion() {
 		return this.identificacion;
 	}
-	public void setIdentificacion(long identificacion) {
+	public void setIdentificacion(Long identificacion) {
 		this.identificacion = identificacion;
 	}
 	public long getTipoDocumento() {

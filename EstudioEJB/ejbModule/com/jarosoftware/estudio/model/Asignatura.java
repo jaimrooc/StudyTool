@@ -1,7 +1,9 @@
 package com.jarosoftware.estudio.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -16,7 +18,8 @@ public class Asignatura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="seq_asignatura", sequenceName="seq_asignatura", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_asignatura")
 	private long codigo;
 
 	private String descripcion;

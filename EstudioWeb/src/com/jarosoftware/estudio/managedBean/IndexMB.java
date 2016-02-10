@@ -33,4 +33,20 @@ public class IndexMB {
 	public String goToTiposDocumentos() {
 		return Contantes.PAGE_DOCUMENT_TYPE;
 	}
+	
+	/**
+	 * Send to 'document type' form
+	 * @return
+	 */
+	public String goToAsignaturas() {
+		return Contantes.PAGE_SUBJECT;
+	}
+	
+	/**
+	 * Send to 'teacher' form
+	 * @return
+	 */
+	public String goToProfesor() {
+		return Contantes.PAGE_TEACHER;
+	}
 }

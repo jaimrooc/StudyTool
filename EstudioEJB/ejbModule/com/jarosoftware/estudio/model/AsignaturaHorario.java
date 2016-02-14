@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="asignatura_horarios")
 @NamedQuery(name="AsignaturaHorario.findAll", query="SELECT a FROM AsignaturaHorario a")
-public class AsignaturaHorario implements Serializable {
+public class AsignaturaHorario implements Serializable, Cloneable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -77,5 +77,14 @@ public class AsignaturaHorario implements Serializable {
 	public void setAsignaturaDescripcionBean(AsignaturaDescripcion asignaturaDescripcionBean) {
 		this.asignaturaDescripcionBean = asignaturaDescripcionBean;
 	}
-
+	
+	public Object clone() {
+		Object obj = null;
+		try {
+			obj = super.clone();
+		} catch (CloneNotSupportedException ex) {
+			System.out.println(" no se puede duplicar");
+		}
+		return obj;
+	}
 }

@@ -7,5 +7,7 @@ public class Contantes {
 	public static final String PAGE_DOCUMENT_TYPE = "tipoDocumento";
 	public static final String PAGE_SUBJECT = "asignatura";
 	public static final String PAGE_TEACHER = "profesor";
+	
+	public static final String SEPARATOR_DAYS = ", ";
 
 }
